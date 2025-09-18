@@ -8,7 +8,7 @@ export interface Track {
 }
 
 export async function fetchTracksByTag(tag: string, limit = 10): Promise<Track[]> {
-  const clientId = 'YOUR_CLIENT_ID_HERE';
+  const clientId = import.meta.env.VITE_JAMENDO_CLIENT_ID;
   const res = await fetch(
     `https://api.jamendo.com/v3.0/tracks/?client_id=${clientId}&format=json&limit=${limit}&tags=${encodeURIComponent(tag)}&audioformat=mp32`
   );
