@@ -1,46 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Hero from './components/Hero';
-import MoodSelector from './components/MoodSelector';
-import DemoSection from './components/DemoSection';
-import HowItWorks from './components/HowItWorks';
-import SpotifySection from './components/SpotifySection';
-import TeamSection from './components/TeamSection';
-import Footer from './components/Footer';
-import MusicVisualizer from './components/MusicVisualizer';
+import React from 'react';
+import MusicPlayer from './components/MusicPlayer';
 
 function App() {
-  const [selectedMood, setSelectedMood] = useState('excited');
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 overflow-x-hidden">
-      <MusicVisualizer />
-      
-      <AnimatePresence>
-        {isLoaded && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-          >
-            <Hero selectedMood={selectedMood} />
-            <MoodSelector 
-              selectedMood={selectedMood} 
-              setSelectedMood={setSelectedMood} 
-            />
-            <DemoSection />
-            <HowItWorks />
-            <SpotifySection />
-            <TeamSection />
-            <Footer />
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <div className="min-h-screen bg-gray-100">
+      <header className="bg-blue-700 text-white p-6 mb-6 shadow">
+        <h1 className="text-3xl font-bold">Jamendo Music Player</h1>
+        <p className="mt-2 text-blue-100">Search and play free tracks from Jamendo by genre/tag.</p>
+      </header>
+      <main className="max-w-3xl mx-auto px-4">
+        <MusicPlayer />
+      </main>
+      <footer className="mt-12 p-4 text-center text-gray-500">
+        Powered by Jamendo | Built with React + TypeScript
+      </footer>
     </div>
   );
 }
